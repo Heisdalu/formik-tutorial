@@ -49,31 +49,31 @@ const App = () => {
         <div className="box">
           <label htmlFor="email">Email</label>
           <Field name="email" type="email" />
-          <p><ErrorMessage name="email" /></p>
+          <ErrorMessage name="email" component="p" />
         </div>
 
         <div className="box">
           <label htmlFor="username">Username</label>
           <Field name="username" type="text" />
-          <p><ErrorMessage name="username" /></p>
+          <ErrorMessage name="username" component="p" />
         </div>
 
         <div className="box">
           <label htmlFor="age">Age</label>
           <Field type="number" name="age" />
-          <p><ErrorMessage name="age" /></p>
+          <ErrorMessage name="age" component="p" />
         </div>
 
         <div className="box">
           <label htmlFor="password">Password</label>
           <Field type="password" name="password" />
-          <p><ErrorMessage name="password" /></p>
+          <ErrorMessage name="password" component="p" />
         </div>
 
         <div className="box">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <Field type="password" name="confirmPassword" />
-          <p><ErrorMessage name="confirmPassword" /></p>
+          <ErrorMessage name="confirmPassword" component="p" />
         </div>
 
         <button type="submit">Submit</button>
