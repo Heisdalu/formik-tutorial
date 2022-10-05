@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Formik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const validate = (values) => {
   const errors = {};
@@ -45,74 +45,39 @@ const App = () => {
       validate={validate}
       onSubmit={submit}
     >
-      {({ getFieldProps, handleSubmit, touched, errors }) => (
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          
-          <div className="username box">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter Email"
-              {...getFieldProps("email")}
-              className={touched.email && errors.email && "error"}
-            />
-            {touched.email && errors.email && <p>{errors.email}</p>}
-          </div>
+      <Form>
+        <div className="box">
+          <label htmlFor="email">Email</label>
+          <Field name="email" type="email" />
+          <p><ErrorMessage name="email" /></p>
+        </div>
 
-          <div className="username box">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Enter Username"
-              {...getFieldProps("username")}
-              className={touched.username && errors.username && "error"}
-            />
-            {touched.username && errors.username && <p>{errors.username}</p>}
-          </div>
+        <div className="box">
+          <label htmlFor="username">Username</label>
+          <Field name="username" type="text" />
+          <p><ErrorMessage name="username" /></p>
+        </div>
 
-          <div className="username box">
-            <label htmlFor="username">Age</label>
-            <input
-              className={touched.age && errors.age && "error"}
-              type="number"
-              id="age"
-              placeholder="Enter Age"
-              {...getFieldProps("age")}
-            />
-            {touched.age && errors.age && <p>{errors.age}</p>}
-          </div>
+        <div className="box">
+          <label htmlFor="age">Age</label>
+          <Field type="number" name="age" />
+          <p><ErrorMessage name="age" /></p>
+        </div>
 
-          <div className="username box">
-            <label htmlFor="username">Password</label>
-            <input
-              className={touched.password && errors.password && "error"}
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter Password"
-              {...getFieldProps("password")}
-            />
-            {touched.password && errors.password && <p>{errors.password}</p>}
-          </div>
+        <div className="box">
+          <label htmlFor="password">Password</label>
+          <Field type="password" name="password" />
+          <p><ErrorMessage name="password" /></p>
+        </div>
 
-          <div className="username box">
-            <label htmlFor="username">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              {...getFieldProps("confirmPassword")}
-            />
-            {touched.confirmPassword && errors.confirmPassword && (
-              <p>{errors.confirmPassword}</p>
-            )}
-          </div>
+        <div className="box">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <Field type="password" name="confirmPassword" />
+          <p><ErrorMessage name="confirmPassword" /></p>
+        </div>
 
-          <button type="submit">Submit</button>
-        </form>
-      )}
+        <button type="submit">Submit</button>
+      </Form>
     </Formik>
   );
 };
