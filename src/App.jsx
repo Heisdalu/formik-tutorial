@@ -29,8 +29,14 @@ const validate = (values) => {
   return errors;
 };
 
-const submit = (val) => {
-  console.log(val);
+const submit = (val, ac) => {
+  console.log(val, ac);
+
+  setTimeout(() => {
+    ac.setSubmitting('false');
+    ac.resetForm()
+  }, 5000)
+
 };
 
 const App = () => {
@@ -46,18 +52,22 @@ const App = () => {
       validate={validate}
       onSubmit={submit}
     >
-      <Form>
-        <Input label="Email" name="email" type="email" />
-        <Input label="Username" name="username" type="text" />
-        <Input label="Age" name="age" type="number" />
-        <Input label="Password" name="password" type="password" />
-        <Input
-          label="Confirm Password"
-          name="confirmPassword"
-          type="password"
-        />
-        <button type="submit">Submit</button>
-      </Form>
+      {({ isSubmitting }) => (
+        <Form>
+          <Input label="Email" name="email" type="email" />
+          <Input label="Username" name="username" type="text" />
+          <Input label="Age" name="age" type="number" />
+          <Input label="Password" name="password" type="password" />
+          <Input
+            label="Confirm Password"
+            name="confirmPassword"
+            type="password"
+          />
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
