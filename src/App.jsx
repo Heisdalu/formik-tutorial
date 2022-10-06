@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Input from "./components/Input";
 
 const validate = (values) => {
   const errors = {};
@@ -46,36 +47,15 @@ const App = () => {
       onSubmit={submit}
     >
       <Form>
-        <div className="box">
-          <label htmlFor="email">Email</label>
-          <Field name="email" type="email" />
-          <ErrorMessage name="email" component="p" />
-        </div>
-
-        <div className="box">
-          <label htmlFor="username">Username</label>
-          <Field name="username" type="text" />
-          <ErrorMessage name="username" component="p" />
-        </div>
-
-        <div className="box">
-          <label htmlFor="age">Age</label>
-          <Field type="number" name="age" />
-          <ErrorMessage name="age" component="p" />
-        </div>
-
-        <div className="box">
-          <label htmlFor="password">Password</label>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="p" />
-        </div>
-
-        <div className="box">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <Field type="password" name="confirmPassword" />
-          <ErrorMessage name="confirmPassword" component="p" />
-        </div>
-
+        <Input label="Email" name="email" type="email" />
+        <Input label="Username" name="username" type="text" />
+        <Input label="Age" name="age" type="number" />
+        <Input label="Password" name="password" type="password" />
+        <Input
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+        />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
